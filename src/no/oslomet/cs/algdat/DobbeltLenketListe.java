@@ -53,9 +53,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public DobbeltLenketListe(T[] a) {
         Objects.requireNonNull(a);
-        if(a==null){
-            throw new NullPointerException("Ingen verdier i tabellen");
-        }
+
         int indeks = 0;
 
         if(a.length>0){
