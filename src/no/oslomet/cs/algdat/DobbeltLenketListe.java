@@ -294,6 +294,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return currentNode;
     }
 
+    public static void fratilKontroll(int antall, int fra, int til){
+        if(til>antall){
+            throw new IndexOutOfBoundsException("Ugyldig intervall");
+        }
+        if(fra<=0){
+            throw new IndexOutOfBoundsException("Ugyldig intervall");
+        }
+        if(fra>til){
+            throw new IndexOutOfBoundsException("Ugyldig intervall");
+        }
+    }
+
 
 
 } // class DobbeltLenketListe
