@@ -56,10 +56,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         if(a==null){
             throw new NullPointerException("Ingen verdier i tabellen");
         }
-        int indeks;
+        int indeks = 0;
 
         if(a.length>0){
-            for(indeks=1; indeks<a.length; indeks++){
+            for(; indeks<a.length; indeks++){
                 if(a[indeks]!=null){
                     hode = new Node<>(a[indeks]);
 
@@ -73,7 +73,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             if(hode!=null){
                 indeks++;
 
-                for (indeks=1; indeks<a.length; indeks++){
+                for (; indeks<a.length; indeks++){
                     if(a[indeks]!=null){
                         hale.neste = new Node(a[indeks], hale, null);
                         hale = hale.neste;
@@ -164,6 +164,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
             while(currentNode!=null){
                 sb.append(", ");
+                //sb.append(" ");
                 sb.append(currentNode.verdi);
                 currentNode = currentNode.neste;
             }
@@ -172,8 +173,26 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
     }
 
-    public String omvendtString() {
-        throw new UnsupportedOperationException();
+    public String omvendtString() { //samme som toString metoden, bare at vi begynner på halen og jobber mot hodet
+        if(tom()){
+            return "[]";
+        }
+        else{
+            Node<T> currentNode = hale;
+            StringBuilder sb = new StringBuilder();
+            sb.append("[");
+            sb.append(currentNode.verdi);
+            currentNode = currentNode.forrige;
+
+            while(currentNode!=null){
+                sb.append(", ");
+                //sb.append(" ");
+                sb.append(currentNode.verdi);
+                currentNode = currentNode.forrige;
+            }
+            sb.append("]");
+            return sb.toString();
+        }
     }
 
     @Override
