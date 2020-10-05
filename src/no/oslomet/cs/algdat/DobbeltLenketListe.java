@@ -107,7 +107,33 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean leggInn(T verdi) {
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(verdi);
+        if(verdi==null){
+            throw new NullPointerException("Null-verdi er ikke gyldig");
+        }
+        else{
+            Node<T> node = new Node<>(verdi);
+
+            // Tilfelle 1: at listen er tom på forhånd
+            if(tom()){
+                hode = node;
+                hale = hode;
+                endringer++;
+                antall++;
+
+                return true;
+            }
+            // Tilfelle 2: at listen ikke er tom
+            else {
+                hale.neste = node;
+                node.forrige = hale;
+                hale = node;
+                endringer++;
+                antall++;
+
+                return true;
+            }
+        }
     }
 
     @Override
@@ -164,7 +190,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
             while(currentNode!=null){
                 sb.append(", ");
-                //sb.append(" ");
                 sb.append(currentNode.verdi);
                 currentNode = currentNode.neste;
             }
@@ -186,7 +211,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
             while(currentNode!=null){
                 sb.append(", ");
-                //sb.append(" ");
                 sb.append(currentNode.verdi);
                 currentNode = currentNode.forrige;
             }

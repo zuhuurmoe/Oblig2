@@ -19,5 +19,13 @@ public class Main {
         DobbeltLenketListe<String> l3 = new DobbeltLenketListe<>(s3);
         System.out.println(l1.toString() +" "+ l2.toString() +" " + l3.toString() +" " + l1.omvendtString() + " "
                 + l2.omvendtString() +" " + l3.omvendtString());
+
+        DobbeltLenketListe<Integer>liste3 = new DobbeltLenketListe<>();
+        System.out.println(liste3.toString()+" "+liste3.omvendtString());
+
+        for(int i = 1; i<=3; i++) {
+            liste3.leggInn(i);
+            System.out.println(liste3.toString() + " " + liste3.omvendtString());
+        }
     }
 }
