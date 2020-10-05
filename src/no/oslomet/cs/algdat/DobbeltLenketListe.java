@@ -148,7 +148,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T hent(int indeks) {
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks, false);
+        Node<T> node = finnNode(indeks);
+        return node.verdi;
     }
 
     @Override
@@ -158,7 +160,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T oppdater(int indeks, T nyverdi) {
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull("Null-verdier er ikke gyldig");
+
+        Node<T> node = finnNode(indeks);
+        T gammelVerdi = node.verdi;
+        endringer++;
+        node.verdi= nyverdi;
+
+        return gammelVerdi;
     }
 
     @Override
