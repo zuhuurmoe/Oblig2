@@ -206,7 +206,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         if(tom()){
             return "[]";
         }
-        else{
             Node<T> currentNode = hode;
             StringBuilder sb = new StringBuilder();
             sb.append("[");
@@ -220,7 +219,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
             sb.append("]");
             return sb.toString();
-        }
+
     }
 
     public String omvendtString() { //samme som toString metoden, bare at vi begynner på halen og jobber mot hodet
@@ -300,7 +299,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
             return currentNode;
         }
-
         else{
             currentNode=hale;
             for(int i = antall-1; i > indeks; i--){
@@ -321,9 +319,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             throw new IllegalArgumentException("Ugyldig intervall");
         }
     }
-
-
-
 } // class DobbeltLenketListe
 
 
