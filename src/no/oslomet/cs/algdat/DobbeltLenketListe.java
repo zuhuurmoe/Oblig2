@@ -19,6 +19,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     /**
      * Node class
+     *
      * @param <T>
      */
     private static final class Node<T> {
@@ -43,13 +44,46 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private int endringer;         // antall endringer i listen
 
 
-
     public DobbeltLenketListe() {
-        throw new UnsupportedOperationException();
+        this.hode = null;
+        this.hale = null;
+        this.antall = 0;
+        this.endringer = 0;
     }
 
     public DobbeltLenketListe(T[] a) {
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(a);
+        if(a==null){
+            throw new NullPointerException("Ingen verdier i tabellen");
+        }
+        int i;
+        if(a.length>0){
+            for(i=0; i<a.length; i++){
+                if(a[i]!=null){
+                    hode= new Node<>(a[i]);
+                    antall++;
+                    endringer++;
+                    break;
+                }
+            }
+            hale = hode;
+            if(hode!=null){
+                i++;
+                for (i=0; i<a.length; i++){
+                    if(a[i]!=null){
+                        hale.neste = new Node(a[i], hale, null);
+                        hale = hale.neste;
+                        antall++;
+                        endringer++;
+                    }
+                }
+            }
+        }
+        
+
+
+
+
     }
 
     public Liste<T> subliste(int fra, int til){
