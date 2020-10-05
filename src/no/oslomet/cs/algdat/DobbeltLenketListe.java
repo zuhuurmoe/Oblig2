@@ -56,34 +56,34 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         if(a==null){
             throw new NullPointerException("Ingen verdier i tabellen");
         }
-        int i;
+        int indeks;
+
         if(a.length>0){
-            for(i=0; i<a.length; i++){
-                if(a[i]!=null){
-                    hode= new Node<>(a[i]);
+            for(indeks=1; indeks<a.length; indeks++){
+                if(a[indeks]!=null){
+                    hode = new Node<>(a[indeks]);
+
                     antall++;
                     endringer++;
+
                     break;
                 }
             }
             hale = hode;
             if(hode!=null){
-                i++;
-                for (i=0; i<a.length; i++){
-                    if(a[i]!=null){
-                        hale.neste = new Node(a[i], hale, null);
+                indeks++;
+
+                for (indeks=1; indeks<a.length; indeks++){
+                    if(a[indeks]!=null){
+                        hale.neste = new Node(a[indeks], hale, null);
                         hale = hale.neste;
+
                         antall++;
                         endringer++;
                     }
                 }
             }
         }
-        
-
-
-
-
     }
 
     public Liste<T> subliste(int fra, int til){
@@ -152,7 +152,24 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException();
+        if(tom()){
+            return "[]";
+        }
+        else{
+            Node<T> currentNode = hode;
+            StringBuilder sb = new StringBuilder();
+            sb.append("[");
+            sb.append(currentNode.verdi);
+            currentNode = currentNode.neste;
+
+            while(currentNode!=null){
+                sb.append(", ");
+                sb.append(currentNode.verdi);
+                currentNode = currentNode.neste;
+            }
+            sb.append("]");
+            return sb.toString();
+        }
     }
 
     public String omvendtString() {
