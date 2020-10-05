@@ -1,5 +1,7 @@
 package no.oslomet.cs.algdat;
 
+import org.w3c.dom.Node;
+
 public class Main {
     public static void main(String[] args) {
         //Oppgave 1
@@ -32,5 +34,14 @@ public class Main {
             System.out.println(liste3.leggInn(i));
             System.out.println(liste3.toString() + " " + liste3.omvendtString());
         }
+
+        //3b
+        Character[] c = {'A','B','C','D','E','F','G','H','I','J',};
+        DobbeltLenketListe<Character> liste = new DobbeltLenketListe<>(c);
+
+        System.out.println(liste.subliste(3,8)); // [D, E, F, G, H]
+        System.out.println(liste.subliste(5,5)); // []
+        //System.out.println(liste.subliste(8,liste.antall())); ​// [I, J]
+        System.out.println(liste.subliste(0,11)); // skal kaste unntak
     }
 }

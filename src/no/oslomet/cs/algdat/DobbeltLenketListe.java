@@ -87,7 +87,22 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public Liste<T> subliste(int fra, int til){
-        throw new UnsupportedOperationException();
+        endringer=0;
+        fratilKontroll(antall, fra, til);
+        int elementer = til-fra;
+
+        Liste<T> nyListe = new DobbeltLenketListe<>();
+        if(elementer<1){
+            return nyListe;
+        }
+        Node<T> thisNode = finnNode(fra);
+        while(elementer>0){
+            nyListe.leggInn(thisNode.verdi);
+            thisNode=thisNode.neste;
+            elementer--;
+        }
+        return nyListe;
+
     }
 
     @Override
@@ -160,7 +175,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T oppdater(int indeks, T nyverdi) {
-        Objects.requireNonNull("Null-verdier er ikke gyldig");
+        Objects.requireNonNull(nyverdi, "Null-verdier er ikke gyldig");
+        indeksKontroll(indeks, false);
 
         Node<T> node = finnNode(indeks);
         T gammelVerdi = node.verdi;
@@ -298,11 +314,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         if(til>antall){
             throw new IndexOutOfBoundsException("Ugyldig intervall");
         }
-        if(fra<=0){
+        if(fra<0){
             throw new IndexOutOfBoundsException("Ugyldig intervall");
         }
         if(fra>til){
-            throw new IndexOutOfBoundsException("Ugyldig intervall");
+            throw new IllegalArgumentException("Ugyldig intervall");
         }
     }
 
