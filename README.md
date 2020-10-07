@@ -30,5 +30,5 @@ I oppgaven har vi hatt følgende arbeidsfordeling:
 # Beskrivelse av oppgaveløsning (maks 5 linjer per oppgave)
 
 * Oppgave 1: Løste ved å implementere..
-* Oppgave 2: ...
+* Oppgave 2: 
 
