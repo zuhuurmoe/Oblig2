@@ -17,7 +17,7 @@ Oppgaven er levert av følgende studenter:
 * Hava Dibirova, s344182, s344182@oslomet.no
 * Hifsa Khan, s344235, s344235@oslomet.no
 * Zuhuur Mohammed, s344095, s344095@oslomet.no
-* Cynthia A Muljono, s309641, s309641@oslomet.no
+* Cynthia A. Muljono, s309641, s309641@oslomet.no
 
 Vi har brukt git til å dokumentere arbeidet vårt. Vi har 16 commits totalt, og hver logg-melding beskriver det vi har gjort av endringer.
 
