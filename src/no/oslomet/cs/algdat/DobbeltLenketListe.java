@@ -4,6 +4,8 @@ package no.oslomet.cs.algdat;
 ////////////////// class DobbeltLenketListe //////////////////////////////
 
 
+import jdk.jshell.spi.ExecutionControl;
+
 import java.util.Comparator;
 import java.util.ConcurrentModificationException;
 import java.util.NoSuchElementException;
@@ -153,12 +155,41 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void leggInn(int indeks, T verdi) {
+        Objects.requireNonNull(verdi, "Tillatter ikke null-verdier");
+
+        indeksKontroll(indeks, true);
+
+        if (tom())
+        {
+            hode = hale = new Node<>(verdi, null, null);
+        }
+        else if (indeks == 0)
+        {
+            hode = hode.forrige = new Node<>(verdi, null, hode);
+        }
+        else if (indeks == antall)
+        {
+            hale = hale.neste = new Node<>(verdi, hale, null);
+        }
+        else
+        {
+            Node<T> p = finnNode(indeks);
+            p.forrige = p.forrige.neste = new Node<>(verdi, p.forrige, p);
+        }
+
+        antall++;
+        endringer++;
+
+
         throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean inneholder(T verdi) {
-        throw new UnsupportedOperationException();
+        if(indeksTil(verdi)> -1) return true;
+        else if (indeksTil(verdi) < 0)
+            return false;
+        throw new ExecutionControl.NotImplementedException();
     }
 
     @Override
@@ -170,6 +201,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public int indeksTil(T verdi) {
+
+        Node<T> temp = hode;
+        for(int i=0; i<antall;i++){
+            if(temp.verdi.equals(verdi)){
+                return i;
+            }
+            temp = temp.neste;
+
+        }
+        return -1;
+
+
         throw new UnsupportedOperationException();
     }
 
@@ -184,6 +227,21 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         node.verdi= nyverdi;
 
         return gammelVerdi;
+    }
+    private T fjernNode(Node<T> p) //HEr lages det en hjelpemetode
+    {
+        if (p==hode)
+        {
+            if(antall == 1) hode= hale= null;
+            else (hode = hode.neste).forrige = null;
+        }
+        else if(p == hale) (hale=hale.forrige).neste = null;
+        else (p.forrige.neste = p.neste).forrige = p.forrige;
+
+        antall --;
+        endringer++;
+
+        return p.verdi;
     }
 
     @Override
@@ -308,6 +366,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return currentNode;
     }
 
+
+
+
+
     public static void fratilKontroll(int antall, int fra, int til){
         if(til>antall){
             throw new IndexOutOfBoundsException("Ugyldig intervall");
@@ -320,5 +382,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
     }
 } // class DobbeltLenketListe
+
+
 
 
