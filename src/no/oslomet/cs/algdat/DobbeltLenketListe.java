@@ -185,7 +185,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public boolean inneholder(T verdi) {
+    public boolean inneholder(T verdi) { //oppg 4
+        if(indeksTil(verdi)> -1) return true;
+        else if (indeksTil(verdi) < 0)
+            return false;
+        throw new ExecutionControl.NotImplementedException();
 
     }
 
