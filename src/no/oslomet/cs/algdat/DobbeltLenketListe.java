@@ -154,7 +154,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public void leggInn(int indeks, T verdi) {
+    public void leggInn(int indeks, T verdi) { //oppg 5
         Objects.requireNonNull(verdi, "Tillatter ikke null-verdier");
 
         indeksKontroll(indeks, true);
