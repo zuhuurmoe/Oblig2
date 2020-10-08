@@ -189,8 +189,7 @@ import java.util.function.Predicate;
         if(indeksTil(verdi)> -1) return true;
         else if (indeksTil(verdi) < 0)
             return false;
-        //throw new ExecutionControl.NotImplementedException();
-return true;
+        throw new ExecutionControl.NotImplementedException();
     }
 
     @Override
