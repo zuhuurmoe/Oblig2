@@ -213,12 +213,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return -1;
 
 
-        throw new UnsupportedOperationException();
     }
 
     @Override
     public T oppdater(int indeks, T nyverdi) {
-        Objects.requireNonNull(nyverdi, "Null-verdier er ikke gyldig");
+        Objects.requireNonNull(nyverdi, "Null-verdier er ugyldig");
         indeksKontroll(indeks, false);
 
         Node<T> node = finnNode(indeks);
