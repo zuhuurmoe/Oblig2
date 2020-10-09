@@ -240,7 +240,7 @@ import java.util.function.Predicate;
     private T fjernNode(Node<T> p)
     {
         //første node
-        if (hale == hode)
+        if (p == hode)
         {
             //sjekker om listen har kun 1 node
             if(antall == 1)
@@ -283,9 +283,9 @@ import java.util.function.Predicate;
         if (verdi == null)
             return false;       // Fjerner en eventuell null-verdi
 
-        for (Node<T> node = hode; node !=null; node = node.neste){
+        for (Node<T> node = hode; node !=null; node = node.neste){ //løper over hele listen - finne verdien - løkke
 
-            if (node.verdi.equals(verdi)){
+            if (node.verdi.equals(verdi)){ //hvis vi finner verdien fjernes den ved hjelp av hjelpemetode - fjerNode
 
                 fjernNode(node); //hjelpemetode
                 return true;
@@ -301,7 +301,7 @@ import java.util.function.Predicate;
         //Parameter Kontroll - lovelig verdier
         indeksKontroll(indeks, false);
 
-        return fjernNode(finnNode(indeks));
+        return fjernNode(finnNode(indeks)); //bruker finnNode for å finne posisjoene til noden
 
     }
 
