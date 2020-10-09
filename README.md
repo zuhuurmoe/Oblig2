@@ -24,7 +24,7 @@ Vi har brukt git til å dokumentere arbeidet vårt. Vi har 16 commits totalt, og
 I oppgaven har vi hatt følgende arbeidsfordeling:
 * Hifsa har hatt hovedansvar for oppgave 1, 3, og 2. 
 * Hava har hatt hovedansvar for oppgave 0, 4, og 5. 
-* Fatima har hatt hovedansvar for oppgave 6, 7 og 8. 
+* Zuhuur har hatt hovedansvar for oppgave 6, 7 og 8. 
 * Cynthia har hatt hovedansvar for oppgave 9, 10. 
 
 # Beskrivelse av oppgaveløsning (maks 5 linjer per oppgave)
