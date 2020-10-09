@@ -186,11 +186,16 @@ import java.util.function.Predicate;
 
     @Override
     public boolean inneholder(T verdi) { //oppg 4
-        if(indeksTil(verdi)> -1) return true;
-        else if (indeksTil(verdi) < 0)
+        if (indeksTil(verdi) > -1) {
+            return true;
+        } else if (indeksTil(verdi) < 0){
             return false;
-        throw new ExecutionControl.NotImplementedException();
+        }
+
+        throw new UnsupportedOperationException();
     }
+
+
 
     @Override
     public T hent(int indeks) {
@@ -385,6 +390,7 @@ import java.util.function.Predicate;
             return denne != null;
         }
 
+
         @Override
         public T next(){
             //sjekker om iterasjonsendringer er lik endringer
@@ -402,21 +408,42 @@ import java.util.function.Predicate;
 
         }
 
-
+        //Opgave 9
         @Override
         public void remove(){
-            throw new UnsupportedOperationException();
+            if(!fjernOK)throw new UnsupportedOperationException("Ikke lov å fjerne en verdi");
+            if(iteratorendringer != endringer) throw new ConcurrentModificationException("Listen er endret");
+
+            fjernOK = false; //setter false
+
+            if(antall == 1) {
+                hode = hale = null;
+            } else if(denne == null){
+                hale = hale.forrige;
+                hale.neste = null;
+            } else if(denne.forrige == hode){
+                hode = hode.neste;
+                hode.forrige=null;
+            } else {
+               Node<T> node = denne.forrige;
+               node.forrige.neste = denne;
+               node.neste.forrige= node.forrige;
+               node = null;
+            }
+
+            iteratorendringer++;
+            endringer++;
+            antall--;
+
+
         }
 
     } // class DobbeltLenketListeIterator
 
-    public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
-        throw new UnsupportedOperationException();
-    }
-
-
-
-
+     // Oppgave 10
+     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
+         throw new UnsupportedOperationException();
+     }
 
 
     public static void fratilKontroll(int antall, int fra, int til){

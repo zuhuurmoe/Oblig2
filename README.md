@@ -31,4 +31,6 @@ I oppgaven har vi hatt følgende arbeidsfordeling:
 
 * Oppgave 1: Løste ved å implementere..
 * Oppgave 2: ...
-
+* Oppgave 9: Til å begynne med, starter metoden å sjekke om listen har noe innhold og om iteratorendringer er lik endringene.
+Videre, vil remove-metoden slette noden ("denne") ved å ta hensyn til punktene skrevet i oppgaveteksten. 
+* Oppgave 10: Sortere ved hjelp av et array. 
