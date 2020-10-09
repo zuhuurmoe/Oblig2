@@ -408,7 +408,7 @@ import java.util.function.Predicate;
 
         }
 
-        //Opgave 9
+        /// Opgave 9
         @Override
         public void remove(){
             if(!fjernOK)throw new UnsupportedOperationException("Ikke lov å fjerne en verdi");
