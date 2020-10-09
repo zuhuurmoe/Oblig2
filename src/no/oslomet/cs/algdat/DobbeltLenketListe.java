@@ -252,6 +252,7 @@ import java.util.function.Predicate;
         else if(p == hale)
         (hale = hale.forrige).neste = null;
 
+        //andre - imellok
         else (p.forrige.neste = p.neste).forrige = p.forrige;
 
         antall --;       //antall reduserer
@@ -283,7 +284,7 @@ import java.util.function.Predicate;
         if (verdi == null)
             return false;       // Fjerner en eventuell null-verdi
 
-        for (Node<T> node = hode; node !=null; node = node.neste){ //løper over hele listen - finne verdien - løkke
+        for (Node<T> node = hode; node !=null; node = node.neste){ //løkke- løper over hele listen - finne verdien
 
             if (node.verdi.equals(verdi)){ //hvis vi finner verdien fjernes den ved hjelp av hjelpemetode - fjerNode
 
