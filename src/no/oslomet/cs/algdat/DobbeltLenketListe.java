@@ -1,8 +1,12 @@
 package no.oslomet.cs.algdat;
 
 
-////////////////// class DobbeltLenketListe //////////////////////////////
+// class DobbeltLenketListe
 
+//Hifsah Khan, s344235, S344235@oslomet.no
+//Hava,s344182, S344182@oslomet.no
+//Cynthia Muljono, s309641, S309641@oslomet.no
+//Zuhuur Mohammed, s344095, S344095@oslomet.no
 
 import jdk.jshell.spi.ExecutionControl;
 
@@ -235,12 +239,19 @@ import java.util.function.Predicate;
     //Hjelpemetode
     private T fjernNode(Node<T> p)
     {
-        if (p==hode)
+        //første node
+        if (hale == hode)
         {
-            if(antall == 1) hode= hale= null;
+            //sjekker om listen har kun 1 node
+            if(antall == 1)
+            hode = hale= null;
+
             else (hode = hode.neste).forrige = null;
         }
-        else if(p == hale) (hale=hale.forrige).neste = null;
+        //siste node
+        else if(p == hale)
+        (hale = hale.forrige).neste = null;
+
         else (p.forrige.neste = p.neste).forrige = p.forrige;
 
         antall --;       //antall reduserer
@@ -252,16 +263,16 @@ import java.util.function.Predicate;
      private Node<T> finnNode(int indeks){
          Node<T> currentNode;
          if(indeks < (antall/2)){
-             currentNode=hode;
+             currentNode = hode;
              for(int i=0; i<indeks; i++){
-                 currentNode=currentNode.neste;
+                 currentNode = currentNode.neste;
              }
              return currentNode;
          }
          else{
-             currentNode=hale;
-             for(int i = antall-1; i > indeks; i--){
-                 currentNode=currentNode.forrige;
+             currentNode = hale;
+             for(int i = antall -1; i > indeks; i--){
+                 currentNode = currentNode.forrige;
              }
          }
          return currentNode;
@@ -270,7 +281,7 @@ import java.util.function.Predicate;
     //oppgave 6
     public boolean fjern(T verdi) {
         if (verdi == null)
-            return false;         // Fjerner en eventuell null-verdi
+            return false;       // Fjerner en eventuell null-verdi
 
         for (Node<T> node = hode; node !=null; node = node.neste){
 
@@ -287,7 +298,7 @@ import java.util.function.Predicate;
 
     @Override
     public T fjern(int indeks) {
-        //Parameter Kontroll
+        //Parameter Kontroll - lovelig verdier
         indeksKontroll(indeks, false);
 
         return fjernNode(finnNode(indeks));
@@ -298,7 +309,7 @@ import java.util.function.Predicate;
      //oppgave 7
     @Override
     public void nullstill() {
-        //Maate 1
+        //Maate 1 (raskere)
         hode = hale = null;
         antall = 0;
         endringer ++;
