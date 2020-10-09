@@ -454,7 +454,7 @@ import java.util.function.Predicate;
 
      // Oppgave 10
      public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
-         throw new UnsupportedOperationException();
+         
      }
 
 
