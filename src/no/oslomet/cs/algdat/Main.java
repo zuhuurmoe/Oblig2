@@ -43,5 +43,7 @@ public class Main {
         System.out.println(liste.subliste(5,5)); // []
         //System.out.println(liste.subliste(8,liste.antall())); ​// [I, J] :D - Kan du spørre om hvorfor vi får error her når man prøver å kjøre?
         System.out.println(liste.subliste(0,11)); // skal kaste unntak
+
+
     }
 }
