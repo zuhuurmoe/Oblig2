@@ -370,13 +370,14 @@ import java.util.function.Predicate;
     //oppgave 8
     @Override
     public Iterator<T> iterator() {
+
         return new DobbeltLenketListeIterator();
     }
 
     public Iterator<T> iterator(int indeks) {
         //Paramter kontroll - sjekker som indeks er lovelig
         indeksKontroll(indeks, false);
-        return new DobbeltLenketListeIterator();
+        return new DobbeltLenketListeIterator(indeks);
     }
 
     private class DobbeltLenketListeIterator implements Iterator<T>
@@ -399,6 +400,7 @@ import java.util.function.Predicate;
 
         @Override
         public boolean hasNext(){
+
             return denne != null;
         }
 
@@ -454,7 +456,7 @@ import java.util.function.Predicate;
 
      // Oppgave 10
      public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
-         
+
      }
 
 
