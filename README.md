@@ -29,8 +29,18 @@ I oppgaven har vi hatt følgende arbeidsfordeling:
 
 # Beskrivelse av oppgaveløsning (maks 5 linjer per oppgave)
 
-* Oppgave 1: Løste ved å implementere..
-* Oppgave 2: ...
+* Oppgave 1: Løste denne oppgaven ved å implementere metodene antall() og tom(). Antall() returnerer antall verdier i en liste, mens tom()
+ returnerer true om listen er tom og false om den ikke er det. Deretter lagde jeg DobbeltLenketListe(T[] a). Her sjekkes det først om 
+ det er null verdier i listen. Hvis det ikke er det settes hode til den første verdien i listen, og hale til den siste. Hvis det er kun en verdi
+ i listen settes hode og hale til samme verdi. Forrige og neste verdi genereres med neste peker og  forrige peker.
+* Oppgave 2: I denne oppgaven ble toString() og omvendtString() implementert. toString() sjekker om listen er tom først. Dersom den ikke er det går
+ den gjennom listen sine verdier og formatterer dem slik det er bedt om. StringBuilder benyttes for å utføre denne oppgaven. omvendtString() gjør det
+  samme, men motsatt vei i listen. leggInn() sjekker for null-verdier. Dersom det ikke er null-verdier oppretter den en ny node som legger inn den nye
+  noden etter at det sjekkes om listen er tom på forhånd eller ikke. 
+* Oppgave 3: Oppgaven ble løst ved å implementere metoden finnNode(int indeks) som avhengig av indeksen avgjør hvor letingen
+skal begynne (fra hode eller hale). hent(int indeks) ble implementert ved å bruke finnNode() til å finne verdien til en node på en spesifikk plass. oppdater(int indeks, T nyverdi) gir
+ en node ny verdi, og returnerer den gamle verdier. fratilKontroll() ble deretter lagd for å sjekke om verdiene som legges inn i intervallet er gyldige.
+ Til slutt ble subliste(int fra, int til) implementert. Metoden returnerer en liste med verdiene i intervallet.
 * Oppgave 6: Metoden sjekker om at listen ikke er tom. Brukte fjernNode som hjelpemetode for å finne ut om verdien er like hode
   hale og flytter forrige og neste pekere, og returnerer til slutt verdien til noden 
   som slettes. i fjern metoden brukes det en for-løkke for å løpe gjennom listen og finne verdein til noden. I fjern(int indeks) kontrolleres parameteret først, 
