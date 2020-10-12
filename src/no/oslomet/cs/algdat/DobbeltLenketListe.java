@@ -420,33 +420,36 @@ import java.util.function.Predicate;
 
         }
 
-        /// Opgave 9
+
         @Override
-        public void remove(){
-            if(!fjernOK)throw new UnsupportedOperationException("Ikke lov å fjerne en verdi");
-            if(iteratorendringer != endringer) throw new ConcurrentModificationException("Listen er endret");
-
-            fjernOK = false; //setter false
-
-            if(antall == 1) {
-                hode = hale = null;
-            } else if(denne == null){
-                hale = hale.forrige;
-                hale.neste = null;
-            } else if(denne.forrige == hode){
-                hode = hode.neste;
-                hode.forrige=null;
+        public void remove() {
+            if (!fjernOK) {
+                throw new IllegalStateException();
+            }
+            if (endringer != iteratorendringer) {
+                throw new ConcurrentModificationException();
             } else {
-               Node<T> node = denne.forrige;
-               node.forrige.neste = denne;
-               node.neste.forrige= node.forrige;
-               node = null;
+                fjernOK = false;
             }
 
-            iteratorendringer++;
-            endringer++;
-            antall--;
+            if (antall == 1) {
+                hale = hode = null;
+            } else if (0 < antall) {
+                if (denne == null) {
+                    hale = hale.forrige;
+                    hale.neste = null;
+                } else if (hode == denne.forrige) {
+                    hode = hode.neste;
+                    hode.forrige = null;
+                } else {
+                    denne.forrige.forrige.neste = denne;
+                    denne.forrige = denne.forrige.forrige;
+                }
+            }
 
+            antall--;
+            endringer++;
+            iteratorendringer++;
 
         }
 
@@ -454,7 +457,22 @@ import java.util.function.Predicate;
 
      // Oppgave 10
      public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
-         
+
+         for (int i = 0; i < liste.antall() - 1; ++i){
+             T k = liste.hent(i);
+             int denne = i;
+
+             for (int j = i + 1; j < liste.antall(); j++){
+                 if(c.compare(liste.hent(j), k) < 0) {
+                     k = liste.hent(j);
+                     denne = j;
+                 }
+             }
+
+             T midlr = liste.hent(i);
+             liste.oppdater(i, k);
+             liste.oppdater(denne, midlr);
+         }
      }
 
 

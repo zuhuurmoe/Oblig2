@@ -2,6 +2,9 @@ package no.oslomet.cs.algdat;
 
 import org.w3c.dom.Node;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class Main {
     public static void main(String[] args) {
         //Oppgave 1
@@ -44,6 +47,19 @@ public class Main {
         //System.out.println(liste.subliste(8,liste.antall())); ​// [I, J]
         System.out.println(liste.subliste(0,11)); // skal kaste unntak
 
+        /////Oppgave 9
+        DobbeltLenketListe<String> liste9 = new DobbeltLenketListe<>(new String []{"Birger" , "Lars" , "Anders" , "Bodil" , "Kari" , "Per" , "Berit"});
+        liste9.fjernHvis(n -> n.charAt(0) == 'B'); // Fjerner navn som starter på B
+        System.out.println("Oppgave 9: " + liste9 + " " + liste9.omvendtString());
+
+        liste9.fjernHvis(n -> n.toLowerCase().contains("e")); //fjerner navn som starter på E
+        System.out.println("Oppgave 9: " + liste9 + " " + liste9.omvendtString());
+
+        //////Oppgave 10
+        System.out.println(" // 10 // ");
+        String [] navn = {"Lars" , "Anders" , "Bodil" , "Kari" , "Per" , "Berit"};
+        Liste<String> liste10 = new DobbeltLenketListe<>(navn);
+        DobbeltLenketListe.sorter(liste10, Comparator.naturalOrder());
 
     }
 }
