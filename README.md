@@ -45,8 +45,12 @@ skal begynne (fra hode eller hale). hent(int indeks) ble implementert ved å bru
   hale og flytter forrige og neste pekere, og returnerer til slutt verdien til noden 
   som slettes. i fjern metoden brukes det en for-løkke for å løpe gjennom listen og finne verdein til noden. I fjern(int indeks) kontrolleres parameteret først, 
   deretter bruker finnNode (hjelpemetoden) til å finne noden som skal fjernes.
-* Oppgave 7: Måte 1 er raskere
-* Oppgave 8: Følgte oppgavetesten
+* Oppgave 7: Måte 1 er raskere, fordi i for løkken starter vi å loope gjennom listen og det tar lengre tid å klasse på metoden så mange ganger.
+  I metode 2 setter vi startposisjonen lik 1. I metode 1 settes bådde hode og hale lik 0, antall til 0 og endringer økes
+  med 1. Implementeringen i denne oppgaven var ganske "enkel".
+* Oppgave 8: Følgte oppgavetesten, sjekker om iteratorendringer er lik endringer. Hvis ikke hasNext() er true kaster vi en 
+  NoSuchElementException. Lagde en iterator metode, returnerer en ny dobbelenkelisteiterato(). Til slutt returnere en ny dobbelenklisteiterator 
+  med samme index, dette hadde vi glemt første gangen vi løste oppgaven og det kom feilmeldinger opp. Men nå er det løst.
 * Oppgave 9: Til å begynne med, starter metoden å sjekke om listen har noe innhold og om iteratorendringer er lik endringene.
   Videre, vil remove-metoden slette noden ("denne") ved å ta hensyn til punktene skrevet i oppgaveteksten. 
 * Oppgave 10: Sortere ved hjelp av et array. 
